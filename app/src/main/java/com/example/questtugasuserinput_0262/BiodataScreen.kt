@@ -262,3 +262,210 @@ private fun FormContent(
                 }
             }
         }
+
+        Spacer(Modifier.height(dimensionResource(R.dimen.space_large)))
+
+        // Tombol proceed
+        Button(
+            onClick = { /* TODO: proses data */ },
+            enabled = isFormValid,
+            shape = RoundedCornerShape(dimensionResource(R.dimen.button_corner)),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = colorResource(R.color.purple_primary),
+                contentColor = colorResource(R.color.white),
+                disabledContainerColor = colorResource(R.color.button_disabled),
+                disabledContentColor = colorResource(R.color.button_disabled_text)
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(dimensionResource(R.dimen.button_height))
+        ) {
+            Text(
+                text = stringResource(R.string.btn_proceed),
+                fontSize = spResource(R.dimen.text_button),
+                fontWeight = FontWeight.Bold
+            )
+        }
+    }
+}
+
+// ---------- Komponen reusable ----------
+
+@Composable
+private fun biodataFieldColors() = OutlinedTextFieldDefaults.colors(
+    focusedBorderColor = colorResource(R.color.field_border_focused),
+    unfocusedBorderColor = colorResource(R.color.field_border),
+    focusedTextColor = colorResource(R.color.text_primary),
+    unfocusedTextColor = colorResource(R.color.text_primary),
+    focusedPlaceholderColor = colorResource(R.color.text_primary),
+    unfocusedPlaceholderColor = colorResource(R.color.text_primary),
+    cursorColor = colorResource(R.color.purple_primary)
+)
+
+@Composable
+private fun BiodataField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    hint: String,
+    modifier: Modifier = Modifier
+) {
+    OutlinedTextField(
+        value = value,
+        onValueChange = onValueChange,
+        placeholder = { Text(text = hint, fontSize = spResource(R.dimen.text_field)) },
+        textStyle = TextStyle(fontSize = spResource(R.dimen.text_field)),
+        singleLine = true,
+        shape = RoundedCornerShape(dimensionResource(R.dimen.field_corner)),
+        colors = biodataFieldColors(),
+        modifier = modifier.height(dimensionResource(R.dimen.field_height))
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun BirthDateField(
+    value: String,
+    onDateSelected: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    var showDialog by remember { mutableStateOf(false) }
+    val datePickerState = rememberDatePickerState()
+    val pattern = stringResource(R.string.date_pattern)
+
+    Box(modifier = modifier) {
+        OutlinedTextField(
+            value = value,
+            onValueChange = {},
+            readOnly = true,
+            placeholder = {
+                Text(
+                    text = stringResource(R.string.hint_birth_date),
+                    fontSize = spResource(R.dimen.text_field)
+                )
+            },
+            textStyle = TextStyle(fontSize = spResource(R.dimen.text_field)),
+            trailingIcon = {
+                Icon(
+                    imageVector = Icons.Default.DateRange,
+                    contentDescription = stringResource(R.string.cd_pick_date),
+                    modifier = Modifier.size(dimensionResource(R.dimen.icon_size))
+                )
+            },
+            singleLine = true,
+            shape = RoundedCornerShape(dimensionResource(R.dimen.field_corner)),
+            colors = biodataFieldColors(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(dimensionResource(R.dimen.field_height))
+        )
+        // Overlay agar seluruh field bisa diklik
+        Box(
+            modifier = Modifier
+                .matchParentSize()
+                .clip(RoundedCornerShape(dimensionResource(R.dimen.field_corner)))
+                .clickable { showDialog = true }
+        )
+    }
+
+    if (showDialog) {
+        DatePickerDialog(
+            onDismissRequest = { showDialog = false },
+            confirmButton = {
+                TextButton(onClick = {
+                    datePickerState.selectedDateMillis?.let { millis ->
+                        val formatter = SimpleDateFormat(pattern, Locale.getDefault())
+                            .apply { timeZone = TimeZone.getTimeZone("UTC") }
+                        onDateSelected(formatter.format(Date(millis)))
+                    }
+                    showDialog = false
+                }) { Text(stringResource(R.string.dialog_ok)) }
+            },
+            dismissButton = {
+                TextButton(onClick = { showDialog = false }) {
+                    Text(stringResource(R.string.dialog_cancel))
+                }
+            }
+        ) {
+            DatePicker(state = datePickerState)
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun ExperienceDropdown(
+    value: String,
+    onSelected: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    var expanded by remember { mutableStateOf(false) }
+    val options = stringArrayResource(R.array.experience_list)
+
+    ExposedDropdownMenuBox(
+        expanded = expanded,
+        onExpandedChange = { expanded = it },
+        modifier = modifier
+    ) {
+        OutlinedTextField(
+            value = value,
+            onValueChange = {},
+            readOnly = true,
+            placeholder = {
+                Text(
+                    text = stringResource(R.string.hint_experience),
+                    fontSize = spResource(R.dimen.text_field)
+                )
+            },
+            textStyle = TextStyle(fontSize = spResource(R.dimen.text_field)),
+            trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+            singleLine = true,
+            shape = RoundedCornerShape(dimensionResource(R.dimen.field_corner)),
+            colors = biodataFieldColors(),
+            modifier = Modifier
+                .menuAnchor()
+                .fillMaxWidth()
+                .height(dimensionResource(R.dimen.field_height))
+        )
+        ExposedDropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false }
+        ) {
+            options.forEach { option ->
+                DropdownMenuItem(
+                    text = { Text(option) },
+                    onClick = {
+                        onSelected(option)
+                        expanded = false
+                    }
+                )
+            }
+        }
+    }
+}
+
+/** Jumlah & warna dot dibaca dari array R.array.dot_colors (colors.xml). */
+@Composable
+private fun DotsIndicator(modifier: Modifier = Modifier) {
+    val resources = LocalContext.current.resources
+    val dotColors = remember {
+        val array = resources.obtainTypedArray(R.array.dot_colors)
+        val colors = List(array.length()) {
+            Color(array.getColor(it, Color.Transparent.toArgb()))
+        }
+        array.recycle()
+        colors
+    }
+
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.dot_spacing))
+    ) {
+        dotColors.forEach { dotColor ->
+            Box(
+                modifier = Modifier
+                    .size(dimensionResource(R.dimen.dot_size))
+                    .background(color = dotColor, shape = CircleShape)
+            )
+        }
+    }
+}
