@@ -100,4 +100,13 @@ fun BiodataScreen() {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-        )
+        ){
+            // Gambar header di belakang
+            Image(
+                painter = painterResource(R.drawable.bg_kucing_meledak),
+                contentDescription = stringResource(R.string.cd_header_image),
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(dimensionResource(R.dimen.header_height))
+            )
