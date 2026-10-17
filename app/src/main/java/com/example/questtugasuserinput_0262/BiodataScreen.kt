@@ -143,3 +143,16 @@ fun BiodataScreen() {
         }
     }
 }
+
+@Composable
+private fun FormContent(
+    firstName: String, onFirstName: (String) -> Unit,
+    lastName: String, onLastName: (String) -> Unit,
+    email: String, onEmail: (String) -> Unit,
+    birthDate: String, onBirthDate: (String) -> Unit,
+    experience: String, onExperience: (String) -> Unit,
+    selectedSkills: MutableList<String>,
+    isFormValid: Boolean
+) {
+    val fieldSpacing = dimensionResource(R.dimen.field_spacing)
+    val skills = stringArrayResource(R.array.skill_list)
