@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <!-- Header & Box -->
+    <dimen name="header_height">320dp</dimen>
+    <dimen name="box_height_offset">560dp</dimen>
+    <dimen name="box_corner">32dp</dimen>
+    <dimen name="box_elevation">12dp</dimen>
+    <dimen name="box_bottom_margin">48dp</dimen>
+    <dimen name="box_padding_horizontal">24dp</dimen>
+    <dimen name="box_padding_vertical">32dp</dimen>
+
+</resources>
