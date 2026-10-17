@@ -202,3 +202,30 @@ private fun FormContent(
                 modifier = Modifier.weight(1f)
             )
         }
+        Spacer(Modifier.height(fieldSpacing))
+
+        // Email
+        BiodataField(
+            value = email,
+            onValueChange = onEmail,
+            hint = stringResource(R.string.hint_email),
+            modifier = Modifier.fillMaxWidth()
+        )
+        Spacer(Modifier.height(fieldSpacing))
+
+        // Tgl lahir & experience
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.space_small))
+        ) {
+            BirthDateField(
+                value = birthDate,
+                onDateSelected = onBirthDate,
+                modifier = Modifier.weight(1f)
+            )
+            ExperienceDropdown(
+                value = experience,
+                onSelected = onExperience,
+                modifier = Modifier.weight(1f)
+            )
+        }
