@@ -129,4 +129,17 @@ fun BiodataScreen() {
                 shape = RoundedCornerShape(dimensionResource(R.dimen.box_corner)),
                 color = colorResource(R.color.white),
                 shadowElevation = dimensionResource(R.dimen.box_elevation)
-            )
+            ){
+                FormContent(
+                    firstName = firstName, onFirstName = { firstName = it },
+                    lastName = lastName, onLastName = { lastName = it },
+                    email = email, onEmail = { email = it },
+                    birthDate = birthDate, onBirthDate = { birthDate = it },
+                    experience = experience, onExperience = { experience = it },
+                    selectedSkills = selectedSkills,
+                    isFormValid = isFormValid
+                )
+            }
+        }
+    }
+}
