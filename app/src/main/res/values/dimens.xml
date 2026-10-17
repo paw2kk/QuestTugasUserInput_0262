@@ -9,4 +9,10 @@
     <dimen name="box_padding_horizontal">24dp</dimen>
     <dimen name="box_padding_vertical">32dp</dimen>
 
+    <!-- Dots -->
+    <dimen name="dot_size">6dp</dimen>
+    <dimen name="dot_spacing">4dp</dimen>
+    <dimen name="dots_padding_start">16dp</dimen>
+    <dimen name="dots_padding_top">8dp</dimen>
+
 </resources>
