@@ -1,10 +1,7 @@
 package com.example.questtugasuserinput_0262
 
 
-import android.os.Bundle
 import android.util.Patterns
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.annotation.DimenRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -35,7 +32,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
@@ -77,7 +73,7 @@ private fun spResource(@DimenRes id: Int): TextUnit =
 
 
 @Composable
-fun BiodataScreen() {
+fun BiodataScreen(modifier: Modifier) {
     // ---------- State ----------
     var firstName by remember { mutableStateOf("") }
     var lastName by remember { mutableStateOf("") }
