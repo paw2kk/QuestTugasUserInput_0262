@@ -165,4 +165,20 @@ private fun FormContent(
                 vertical = dimensionResource(R.dimen.box_padding_vertical)
             ),
         horizontalAlignment = Alignment.CenterHorizontally
-    )
+    ){
+        // Judul
+        Text(
+            text = stringResource(R.string.title_form),
+            color = colorResource(R.color.purple_primary),
+            fontSize = spResource(R.dimen.text_title),
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center
+        )
+        Spacer(Modifier.height(dimensionResource(R.dimen.space_small)))
+        Text(
+            text = stringResource(R.string.subtitle_form),
+            color = colorResource(R.color.text_secondary),
+            fontSize = spResource(R.dimen.text_subtitle),
+            letterSpacing = spResource(R.dimen.letter_spacing_subtitle),
+            textAlign = TextAlign.Center
+        )
