@@ -110,3 +110,13 @@ fun BiodataScreen() {
                     .fillMaxWidth()
                     .height(dimensionResource(R.dimen.header_height))
             )
+
+            // Indikator titik-titik
+            DotsIndicator(
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+                    .padding(
+                        start = dimensionResource(R.dimen.dots_padding_start),
+                        top = dimensionResource(R.dimen.dots_padding_top)
+                    )
+            )
