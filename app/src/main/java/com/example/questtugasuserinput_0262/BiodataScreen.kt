@@ -70,3 +70,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import java.util.TimeZone
+
+@Composable
+private fun spResource(@DimenRes id: Int): TextUnit =
+    with(LocalDensity.current) { dimensionResource(id).toSp() }
