@@ -92,3 +92,12 @@ fun BiodataScreen() {
             birthDate.isNotBlank() &&
             experience.isNotBlank() &&
             selectedSkills.isNotEmpty()
+    Scaffold(
+        containerColor = colorResource(R.color.scaffold_background)
+    ) { innerPadding ->
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+        )
