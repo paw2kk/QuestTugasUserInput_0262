@@ -7,14 +7,21 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
+    <color name="scaffold_background">#FFFFFFFF</color>
+    <color name="purple_primary">#FF5E35B1</color>
+    <color name="text_primary">#FF1C1B1F</color>
+    <color name="text_secondary">#FF6B6B6B</color>
+    <color name="field_border">#FF79747E</color>
+    <color name="field_border_focused">#FF5E35B1</color>
+    <color name="button_disabled">#FFE0E0E0</color>
+    <color name="button_disabled_text">#FFFFFFFF</color>
     <color name="dot_active">#FF1E6BE6</color>
     <color name="dot_inactive">#FF8A8A8A</color>
 
     <array name="dot_colors">
-    <item>@color/dot_active</item>
-    <item>@color/dot_inactive</item>
-    <item>@color/dot_inactive</item>
-    <item>@color/dot_inactive</item>
+        <item>@color/dot_active</item>
+        <item>@color/dot_inactive</item>
+        <item>@color/dot_inactive</item>
+        <item>@color/dot_inactive</item>
     </array>
 </resources>
