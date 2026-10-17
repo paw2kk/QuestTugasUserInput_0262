@@ -229,3 +229,36 @@ private fun FormContent(
                 modifier = Modifier.weight(1f)
             )
         }
+        Spacer(Modifier.height(fieldSpacing))
+
+        // Skill
+        Text(
+            text = stringResource(R.string.label_skill),
+            color = colorResource(R.color.text_primary),
+            fontSize = spResource(R.dimen.text_label),
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.fillMaxWidth()
+        )
+        Spacer(Modifier.height(dimensionResource(R.dimen.space_small)))
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            skills.forEach { skill ->
+                val checked = skill in selectedSkills
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Checkbox(
+                        checked = checked,
+                        onCheckedChange = { isChecked ->
+                            if (isChecked) selectedSkills.add(skill) else selectedSkills.remove(skill)
+                        }
+                    )
+                    Text(
+                        text = skill,
+                        color = colorResource(R.color.text_primary),
+                        fontSize = spResource(R.dimen.text_checkbox)
+                    )
+                }
+            }
+        }
