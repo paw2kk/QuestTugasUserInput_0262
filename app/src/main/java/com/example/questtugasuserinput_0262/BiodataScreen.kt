@@ -182,3 +182,23 @@ private fun FormContent(
             letterSpacing = spResource(R.dimen.letter_spacing_subtitle),
             textAlign = TextAlign.Center
         )
+        Spacer(Modifier.height(dimensionResource(R.dimen.space_xlarge)))
+
+        // Nama depan & belakang
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.space_small))
+        ) {
+            BiodataField(
+                value = firstName,
+                onValueChange = onFirstName,
+                hint = stringResource(R.string.hint_first_name),
+                modifier = Modifier.weight(1f)
+            )
+            BiodataField(
+                value = lastName,
+                onValueChange = onLastName,
+                hint = stringResource(R.string.hint_last_name),
+                modifier = Modifier.weight(1f)
+            )
+        }
