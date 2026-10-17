@@ -85,3 +85,10 @@ fun BiodataScreen() {
     var birthDate by remember { mutableStateOf("") }
     var experience by remember { mutableStateOf("") }
     val selectedSkills = remember { mutableStateListOf<String>() }
+
+    val isFormValid = firstName.isNotBlank() &&
+            lastName.isNotBlank() &&
+            Patterns.EMAIL_ADDRESS.matcher(email).matches() &&
+            birthDate.isNotBlank() &&
+            experience.isNotBlank() &&
+            selectedSkills.isNotEmpty()
