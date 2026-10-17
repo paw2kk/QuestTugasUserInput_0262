@@ -15,4 +15,29 @@
     <dimen name="dots_padding_start">16dp</dimen>
     <dimen name="dots_padding_top">8dp</dimen>
 
+    <!-- Fields -->
+    <dimen name="field_height">56dp</dimen>
+    <dimen name="field_corner">28dp</dimen>
+    <dimen name="field_spacing">16dp</dimen>
+    <dimen name="field_border_width">1dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+
+    <!-- Spacing -->
+    <dimen name="space_small">8dp</dimen>
+    <dimen name="space_medium">16dp</dimen>
+    <dimen name="space_large">24dp</dimen>
+    <dimen name="space_xlarge">32dp</dimen>
+
+    <!-- Button -->
+    <dimen name="button_height">52dp</dimen>
+    <dimen name="button_corner">26dp</dimen>
+
+    <!-- Text sizes (sp) -->
+    <dimen name="text_title">28sp</dimen>
+    <dimen name="text_subtitle">12sp</dimen>
+    <dimen name="text_field">14sp</dimen>
+    <dimen name="text_label">14sp</dimen>
+    <dimen name="text_checkbox">12sp</dimen>
+    <dimen name="text_button">14sp</dimen>
+    <dimen name="letter_spacing_subtitle">0.5sp</dimen>
 </resources>
