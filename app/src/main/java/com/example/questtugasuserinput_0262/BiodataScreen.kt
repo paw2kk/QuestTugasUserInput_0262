@@ -74,3 +74,14 @@ import java.util.TimeZone
 @Composable
 private fun spResource(@DimenRes id: Int): TextUnit =
     with(LocalDensity.current) { dimensionResource(id).toSp() }
+
+
+@Composable
+fun BiodataScreen() {
+    // ---------- State ----------
+    var firstName by remember { mutableStateOf("") }
+    var lastName by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var birthDate by remember { mutableStateOf("") }
+    var experience by remember { mutableStateOf("") }
+    val selectedSkills = remember { mutableStateListOf<String>() }
