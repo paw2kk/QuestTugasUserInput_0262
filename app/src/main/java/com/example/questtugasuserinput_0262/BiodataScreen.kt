@@ -156,3 +156,13 @@ private fun FormContent(
 ) {
     val fieldSpacing = dimensionResource(R.dimen.field_spacing)
     val skills = stringArrayResource(R.array.skill_list)
+
+    Column(
+        modifier = Modifier
+            .verticalScroll(rememberScrollState())
+            .padding(
+                horizontal = dimensionResource(R.dimen.box_padding_horizontal),
+                vertical = dimensionResource(R.dimen.box_padding_vertical)
+            ),
+        horizontalAlignment = Alignment.CenterHorizontally
+    )
