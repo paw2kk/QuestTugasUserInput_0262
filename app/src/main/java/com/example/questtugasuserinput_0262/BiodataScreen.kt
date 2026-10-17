@@ -120,3 +120,13 @@ fun BiodataScreen() {
                         top = dimensionResource(R.dimen.dots_padding_top)
                     )
             )
+            Surface(
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .fillMaxWidth()
+                    .padding(bottom = dimensionResource(R.dimen.box_bottom_margin))
+                    .height(dimensionResource(R.dimen.box_height_offset)),
+                shape = RoundedCornerShape(dimensionResource(R.dimen.box_corner)),
+                color = colorResource(R.color.white),
+                shadowElevation = dimensionResource(R.dimen.box_elevation)
+            )
