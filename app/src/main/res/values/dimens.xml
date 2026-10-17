@@ -17,7 +17,7 @@
 
     <!-- Fields -->
     <dimen name="field_height">56dp</dimen>
-    <dimen name="field_corner">28dp</dimen>
+    <dimen name="field_corner">15dp</dimen>
     <dimen name="field_spacing">16dp</dimen>
     <dimen name="field_border_width">1dp</dimen>
     <dimen name="icon_size">24dp</dimen>
